@@ -2,20 +2,21 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .forms import EmployeeForm
 from .models import Employee
 
 # Create your views here.
-class CreateEmployee(generic.CreateView):
+class CreateEmployee(LoginRequiredMixin, generic.CreateView):
     form_class = EmployeeForm
     template_name = "employee/employee_form.html"
     success_url = reverse_lazy("employee:index")
     context_object_name = "create_employee"
 
 
-class UpdateEmployee(generic.UpdateView):
+class UpdateEmployee(LoginRequiredMixin, generic.UpdateView):
     model = Employee
     form_class = EmployeeForm
     template_name = "employee/employee_form.html"
@@ -23,7 +24,7 @@ class UpdateEmployee(generic.UpdateView):
     context_object_name = "update_employee"
 
 
-class DeleteEmployee(generic.DeleteView):
+class DeleteEmployee(LoginRequiredMixin, generic.DeleteView):
     model = Employee
     success_url = reverse_lazy("employee:index")
     template_name = "employee/delete_form.html"
@@ -40,6 +41,6 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy("employee:index")
     template_name = "employee/signup.html"
 
-class EmployeeDetailView(generic.DetailView):
+class EmployeeDetailView(LoginRequiredMixin, generic.DetailView):
     model = Employee
     template_name = "employee/detail_view.html"

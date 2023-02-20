@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = "employee:base"
 LOGOUT_REDIRECT_URL = "employee:base" 
+LOGIN_URL = 'employee:base'
 
 # Application definition
 
