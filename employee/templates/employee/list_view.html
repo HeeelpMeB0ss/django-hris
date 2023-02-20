@@ -1,7 +1,7 @@
 {% extends 'employee/base.html' %}
 
 {% block title %}
-    list view
+    List view
 {% endblock title %}
 
 
@@ -10,10 +10,7 @@
     {% if employee_list %}
     <ul>
     {% for employee in employee_list %}
-        <li>FirstName: {{ employee.firstName }}</li>
-        <li>MiddleName:  {{ employee.middleName }}</li>
-        <li>LastName: {{ employee.lastName }}</li>
-        <li>Gender: {{ employee.gender }}</li>
+        <li><a href="{% url 'employee:detail' employee.id %}">{{ employee.firstName }} </a></li>
         <br>
     {% endfor %}
     </ul>

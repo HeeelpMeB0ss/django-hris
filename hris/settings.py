@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "employee",
-    'phone_field',
     'crispy_forms',
+    "phonenumber_field",
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -128,4 +128,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
+PHONENUMBER_DEFAULT_REGION = "PH"
+PHONENUMBER_DB_FORMAT = "NATIONAL"
+PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
