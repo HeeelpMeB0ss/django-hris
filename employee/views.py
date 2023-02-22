@@ -4,11 +4,16 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-from .forms import EmployeeForm
-from .models import Employee
+from .forms import EmployeeForm, EmployeeLeaveForm
+from .models import Employee, EmployeeLeave
 
 # Create your views here.
+class CreateEmployeeLeave(LoginRequiredMixin, generic.CreateView):
+    form_class = EmployeeLeaveForm
+    template_name = "employee/employee_leave.html"
+    success_url = reverse_lazy("employee:index")
+    context_object_name = "employee_leave"
+
 class CreateEmployee(LoginRequiredMixin, generic.CreateView):
     form_class = EmployeeForm
     template_name = "employee/employee_form.html"

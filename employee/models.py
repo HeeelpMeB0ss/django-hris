@@ -1,5 +1,7 @@
 from django.db import models
+from django.conf import settings
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Employee(models.Model):
@@ -28,3 +30,8 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.firstName
+
+class EmployeeLeave(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    date_leave = models.DateField()
+    date_back = models.DateField()
