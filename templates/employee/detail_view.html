@@ -1,12 +1,12 @@
-{% extends 'employee/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
-    Detail View
+Detail View
 {% endblock title %}
-    
+
 
 {% block content %}
-    
+
 <p>gender {{ object.gender }}</p>
 <p>dateBirth {{ object.dateBirth }}</p>
 <p>contactNumber {{ object.contactNumber }}</p>
@@ -17,4 +17,3 @@
 <p><a href="{% url 'employee:update' object.id %}">Update</a></p>
 <p><a href="{% url 'employee:delete' object.id %}">Delete</a></p>
 {% endblock content %}
-    

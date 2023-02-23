@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+List view
+{% endblock title %}
+
+
+{% block content %}
+
+{% if employee_list %}
+<ul>
+    {% for employee in employee_list %}
+    <li><a href="{% url 'employee:detail' employee.id %}">{{ employee.firstName }} </a></li>
+    <br>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No employee are available.</p>
+{% endif %}
+
+{% endblock content %}

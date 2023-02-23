@@ -25,11 +25,9 @@ SECRET_KEY = "django-insecure-73$x3@=#su60t*k)jw0z8u9#p9#29wj5gw-9eccz&#tqx$vsf+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = "employee:base"
-LOGOUT_REDIRECT_URL = "employee:base" 
-LOGIN_URL = 'employee:base'
+
 
 # Application definition
 
@@ -41,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "employee",
-    'crispy_forms',
+    "crispy_forms",
     "phonenumber_field",
 ]
 
@@ -62,7 +60,7 @@ ROOT_URLCONF = "hris.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [str(BASE_DIR.joinpath('templates'))],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -123,11 +121,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "employee:base"
+LOGOUT_REDIRECT_URL = "employee:base" 
+LOGIN_URL = 'employee:base'
+
 PHONENUMBER_DEFAULT_REGION = "PH"
 PHONENUMBER_DB_FORMAT = "NATIONAL"
 PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
